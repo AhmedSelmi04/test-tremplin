@@ -1,3 +1,29 @@
-mysql
-.idea
-.vscode
+# Laravel
+/vendor/
+/node_modules/
+/public/storage
+/storage/*.key
+/.env
+/.env.backup
+/.phpunit.result.cache
+/docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+
+# Docker
+/mysql/
+!.gitkeep
+/www/.env
+/www/vendor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

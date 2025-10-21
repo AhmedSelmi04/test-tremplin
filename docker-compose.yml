@@ -1,5 +1,3 @@
-version: '1'
-
 services:
   # MYSQL
   db:
@@ -18,12 +16,17 @@ services:
     links:
       - db:db
 
-  # APACHE
+  # APACHE avec PHP
   apache:
-    image: lavoweb/php-8.3
+    image: php:8.3-apache  # Image officielle PHP + Apache
+    container_name: apache_php
     ports:
-      - "80:80"
+      - "8081:80"
     volumes:
       - ./www:/var/www/html
+      
+    depends_on:
+      - db
+    working_dir: /var/www/html   
     links:
       - db:database
