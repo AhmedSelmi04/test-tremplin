@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactez l'Agence</title>
     <style>
-        /* Reset et base */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +30,6 @@
             padding: 20px;
         }
 
-        /* Header */
         .header {
             text-align: center;
             margin-bottom: 40px;
@@ -46,7 +44,7 @@
             font-weight: 300;
         }
 
-        /* Layout principal */
+       
         .form-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -57,7 +55,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* Sections */
+        
         .form-section {
             margin-bottom: 30px;
         }
@@ -71,7 +69,7 @@
             padding-bottom: 10px;
         }
 
-        /* Grilles responsive */
+        
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -84,7 +82,7 @@
             gap: 15px;
         }
 
-        /* Champs formulaire */
+       
         .form-group {
             margin-bottom: 20px;
         }
@@ -116,7 +114,7 @@
             resize: vertical;
         }
 
-        /* Checkboxes et radios */
+      
         .checkbox-group, .radio-group {
             display: flex;
             flex-direction: column;
@@ -133,7 +131,6 @@
             width: auto;
         }
 
-        /* Disponibilités */
         .availability-section {
             background: #f8f9fa;
             padding: 20px;
@@ -184,7 +181,6 @@
             background: #2980b9;
         }
 
-        /* Bouton d'envoi */
         .submit-btn {
             background: linear-gradient(135deg, #27ae60, #2ecc71);
             color: white;
@@ -204,7 +200,7 @@
             box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
         }
 
-        /* Messages d'alerte */
+        
         .alert {
             padding: 15px;
             border-radius: 8px;
@@ -233,7 +229,7 @@
             color: #e74c3c;
         }
 
-        /* Responsive Design */
+        
         @media (max-width: 968px) {
             .form-container {
                 grid-template-columns: 1fr;
@@ -282,12 +278,12 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+        
         <div class="header">
             <h1>CONTACTEZ L'AGENCE</h1>
         </div>
 
-        <!-- Messages d'alerte -->
+    
         @if(session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -304,17 +300,17 @@
             </div>
         @endif
 
-        <!-- Formulaire -->
+     
         <form action="{{ route('contact.submit') }}" method="POST" class="form-container">
             @csrf
 
-            <!-- Colonne gauche -->
+         
             <div class="left-column">
-                <!-- Civilité et coordonnées -->
+           
                 <div class="form-section">
                     <h2 class="section-title">VOS COORDONNÉES</h2>
                     
-                    <!-- Civilité -->
+              
                     <div class="form-group">
                         <label>Civilite</label>
                         <div class="radio-group">
@@ -332,7 +328,7 @@
                         @enderror
                     </div>
 
-                    <!-- Nom et Prénom -->
+                   
                     <div class="grid-2">
                         <div class="form-group">
                             <label for="nom">Nom</label>
@@ -350,7 +346,7 @@
                         </div>
                     </div>
 
-                    <!-- Email et Téléphone -->
+                    
                     <div class="grid-2">
                         <div class="form-group">
                             <label for="email">Adresse mail</label>
@@ -369,7 +365,7 @@
                     </div>
                 </div>
 
-                <!-- Type de message -->
+               
                 <div class="form-section">
                     <h2 class="section-title">VOTRE MESSAGE</h2>
                     <div class="checkbox-group">
@@ -390,8 +386,6 @@
                         <span style="color: #e74c3c; font-size: 0.9rem;">{{ $message }}</span>
                     @enderror
                 </div>
-
-                <!-- Message -->
                 <div class="form-group">
                     <label for="message">Votre message</label>
                     <textarea id="message" name="message" placeholder="Tapez votre message ici..." required>{{ old('message') }}</textarea>
@@ -401,15 +395,14 @@
                 </div>
             </div>
 
-            <!-- Colonne droite -->
             <div class="right-column">
-                <!-- Disponibilités -->
+
                 <div class="form-section">
                     <h2 class="section-title">DISPONIBILITÉS POUR UNE VISITE</h2>
                     
                     <div class="availability-section">
                         <div id="disponibilites-container">
-                            <!-- Les disponibilités ajoutées apparaîtront ici -->
+  
                             @if(old('disponibilites'))
                                 @foreach(old('disponibilites') as $disponibilite)
                                     @php
@@ -425,7 +418,7 @@
                             @endif
                         </div>
 
-                        <!-- Ajouter une disponibilité -->
+
                         <div class="grid-2">
                             <div class="form-group">
                                 <label for="jour">Jour</label>
@@ -465,13 +458,12 @@
                 </div>
             </div>
 
-            <!-- Bouton d'envoi -->
             <button type="submit" class="submit-btn">ENVOYER</button>
         </form>
     </div>
 
     <script>
-        // Gestion des disponibilités
+
         document.getElementById('add-disponibilite').addEventListener('click', function() {
             const jour = document.getElementById('jour').value;
             const heure = document.getElementById('heure').value;
@@ -480,7 +472,6 @@
 
             const container = document.getElementById('disponibilites-container');
             
-            // Vérifier si cette disponibilité existe déjà
             const existingInputs = container.querySelectorAll('input[type="hidden"]');
             for (let input of existingInputs) {
                 if (input.value === value) {
@@ -489,7 +480,7 @@
                 }
             }
             
-            // Créer l'élément d'affichage
+
             const item = document.createElement('div');
             item.className = 'availability-item';
             item.innerHTML = `
@@ -498,23 +489,18 @@
                 <input type="hidden" name="disponibilites[]" value="${value}">
             `;
 
-            // Ajouter au container
             container.appendChild(item);
 
-            // Gestion de la suppression
             item.querySelector('.remove-disponibilite').addEventListener('click', function() {
                 item.remove();
             });
         });
-
-        // Suppression des disponibilités existantes
         document.querySelectorAll('.remove-disponibilite').forEach(button => {
             button.addEventListener('click', function() {
                 this.closest('.availability-item').remove();
             });
         });
 
-        // Validation côté client
         document.querySelector('form').addEventListener('submit', function(e) {
             const checkboxes = document.querySelectorAll('input[name="types_visite[]"]:checked');
             if (checkboxes.length === 0) {
@@ -530,8 +516,6 @@
                 return false;
             }
         });
-
-        // Réinitialiser les messages d'erreur quand l'utilisateur commence à taper
         document.querySelectorAll('input, textarea, select').forEach(element => {
             element.addEventListener('input', function() {
                 const errorSpan = this.parentNode.querySelector('span[style*="color: #e74c3c"]');
