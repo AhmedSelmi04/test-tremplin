@@ -8,7 +8,7 @@
 **Email**: ahmedsalmi928@gmail.com
 
 ## 🖼️ Screenshot
-![Formulaire de contact](Capture d'écran 2025-10-21 170841.png)
+![Formulaire de contact](Capture.png)
 
 ## 🚀 Installation et démarrage
 
